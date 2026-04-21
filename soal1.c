@@ -12,10 +12,10 @@ int main() {
     char input[1001];
     
     if (fgets(input, sizeof(input), stdin) == NULL) {
+        printf("\n");
         return 0;
     }
     
-    // Hapus newline
     int len = strlen(input);
     if (len > 0 && input[len-1] == '\n') {
         input[len-1] = '\0';
@@ -23,6 +23,7 @@ int main() {
     }
     
     if (len == 0) {
+        printf("\n");
         return 0;
     }
     
@@ -56,10 +57,8 @@ int main() {
         }
     }
     hasil[j] = '\0';
-    
-    if (j > 0) {
-        printf("%s\n", hasil);
-    }
+
+    printf("%s\n", hasil);
     
     return 0;
 }
