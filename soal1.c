@@ -10,50 +10,44 @@
 
 int main() {
     char input[1001];
-    fgets(input, sizeof(input), stdin);
-
+    
     if (fgets(input, sizeof(input), stdin) == NULL) {
-        printf("");
         return 0;
     }
     
+    // Hapus newline
     int len = strlen(input);
-    if (input[len-1] == '\n') {
+    if (len > 0 && input[len-1] == '\n') {
         input[len-1] = '\0';
         len--;
     }
     
-    // Array karakter dihapus 
-    int hapus[1001] = {0};
+    if (len == 0) {
+        return 0;
+    }
     
-     // Stack save '('
+    int hapus[1001] = {0};
     int stack[1001];
     int top = -1;
-
-    // Cari ')' yang tidak ada pasangan '('
+    
     for (int i = 0; i < len; i++) {
         if (input[i] == '(') {
-            // Save '(' (indexnya)  ke stack 
             top++;
             stack[top] = i;
         } else if (input[i] == ')') {
             if (top >= 0) {
-                // Ada pasangan '(' pop dri stack
                 top--;
             } else {
-                // Tidak ada pasangan ')' ditanda 
                 hapus[i] = 1;
             }
         }
     }
-
-    // Sisa '(' dihapus
+    
     while (top >= 0) {
         hapus[stack[top]] = 1;
         top--;
     }
     
-    // Mengumpulkan hasil ke new string
     char hasil[1001];
     int j = 0;
     for (int i = 0; i < len; i++) {
@@ -63,12 +57,9 @@ int main() {
     }
     hasil[j] = '\0';
     
-    // cetak dgn newline kalo ada isi
     if (j > 0) {
         printf("%s\n", hasil);
     }
-    
-    printf("\n");
     
     return 0;
 }
