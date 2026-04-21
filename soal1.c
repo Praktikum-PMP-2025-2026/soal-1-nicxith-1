@@ -13,6 +13,10 @@ int main() {
     char input[1001];
     fgets(input, sizeof(input), stdin);
     
+    if (fgets(input, sizeof(input), stdin) == NULL) {
+        return 0;
+    }
+    
     int len = strlen(input);
     if (input[len-1] == '\n') {
         input[len-1] = '\0';
