@@ -12,8 +12,9 @@
 int main() {
     char input[1001];
     fgets(input, sizeof(input), stdin);
-    
+
     if (fgets(input, sizeof(input), stdin) == NULL) {
+        printf("");
         return 0;
     }
     
