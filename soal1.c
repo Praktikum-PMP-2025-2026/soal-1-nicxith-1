@@ -49,11 +49,19 @@ int main() {
         top--;
     }
     
-    // Print char yg ga dihapus
+    // Mengumpulkan hasil ke new string
+    char hasil[1001];
+    int j = 0;
     for (int i = 0; i < len; i++) {
         if (!hapus[i]) {
-            printf("%c", input[i]);
+            hasil[j++] = input[i];
         }
+    }
+    hasil[j] = '\0';
+    
+    // cetak dgn newline kalo ada isi
+    if (j > 0) {
+        printf("%s\n", hasil);
     }
     
     printf("\n");
